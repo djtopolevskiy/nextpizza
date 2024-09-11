@@ -5,7 +5,7 @@ import { Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { useClickAway } from 'react-use'
+import { useClickAway, useDebounce } from 'react-use'
 import { Api } from '../../../services/api-client'
 
 interface Props {
@@ -22,11 +22,24 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 		setFocused(false)
 	})
 
-	React.useEffect(() => {
-		Api.products.search(searchQuery).then(items => {
-			setProducts(items)
-		})
-	}, [searchQuery])
+	useDebounce(
+		async () => {
+			try {
+				const responce = await Api.products.search(searchQuery)
+				setProducts(responce)
+			} catch (error) {
+				console.log(error)
+			}
+		},
+		250,
+		[searchQuery]
+	)
+
+	const onClickItem = () => {
+		setProducts([])
+		setSearchQuery('')
+		setFocused(false)
+	}
 
 	return (
 		<>
@@ -60,7 +73,8 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 					>
 						{products.map(product => (
 							<Link
-								href={`/products/${product.id}`}
+								onClick={onClickItem}
+								href={`/product/${product.id}`}
 								key={product.id}
 								className='flex items-center h-8'
 							>

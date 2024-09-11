@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
-import Image from "next/image"
-import React from "react"
+import Image from 'next/image'
+import React from 'react'
 
-import { cn } from "@/lib/utils"
-import Link from "next/link"
-import { Container } from "./container"
-import { SearchInput } from "./search-input"
+import { cn } from '@/lib/utils'
+import Link from 'next/link'
+import { Container } from './container'
+import { SearchInput } from './search-input'
 // import { AuthModal } from './modals/auth-modal';
 // import { ProfileButton } from './profile-button';
 // import toast from 'react-hot-toast';
@@ -50,7 +50,7 @@ export const Header: React.FC<Props> = ({
 	// const onClickOpenAuthModal = () => setOpenAuthModal(true)
 
 	return (
-		<header className={cn("border-b border-gray-100", className)}>
+		<header className={cn('border-b border-gray-100', className)}>
 			<Container className='flex items-center justify-between py-8'>
 				<Link href='/'>
 					<div className='flex items-center gap-4'>

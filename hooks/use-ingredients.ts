@@ -1,20 +1,14 @@
 import { Ingredient } from '@prisma/client'
 import React from 'react'
-import { useSet } from 'react-use'
 import { Api } from '../services/api-client'
 
-interface ReturnProps {
-	ingredients: Ingredient[]
-	loading: boolean
-	selectedIngredients: Set<string>
-	onAddId: (id: string) => void
-}
-
-export const useFilterIngredients = (): ReturnProps => {
+export const useIngredients = () => {
+	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [ingredients, setIngredients] = React.useState<Ingredient[]>([])
+	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [loading, setLoading] = React.useState(true)
-	const [selectedIds, { toggle }] = useSet(new Set<string>([]))
 
+	// eslint-disable-next-line react-hooks/rules-of-hooks
 	React.useEffect(() => {
 		async function fetchIngredients() {
 			try {
@@ -33,7 +27,5 @@ export const useFilterIngredients = (): ReturnProps => {
 	return {
 		ingredients,
 		loading,
-		onAddId: toggle,
-		selectedIngredients: selectedIds,
 	}
 }

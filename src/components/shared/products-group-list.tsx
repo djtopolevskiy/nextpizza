@@ -1,9 +1,9 @@
-"use client"
-import React from "react"
-import { useIntersection } from "react-use"
-import { useCategoryStore } from "../../../store/category"
-import { ProductCard } from "./product-card"
-import { Title } from "./title"
+'use client'
+import React from 'react'
+import { useIntersection } from 'react-use'
+import { useCategoryStore } from '../../../store/category'
+import { ProductCard } from './product-card'
+import { Title } from './title'
 
 interface Props {
 	id: number
@@ -43,7 +43,7 @@ export const ProductsGroupList: React.FC<Props> = ({
 						id={item.id}
 						name={item.name}
 						imageUrl={item.imageUrl}
-						price={item.items[0].price}
+						price={item.items.price}
 					/>
 				))}
 			</div>

@@ -108,9 +108,4 @@ export const products = [
 		imageUrl: "/surniki.avif",
 		categoryId: 2,
 	},
-	{
-		name: "Сирная",
-		imageUrl: "/99f5cb91225b4875bd06a26d2e842106.avif",
-		categoryId: 1,
-	},
 ]

@@ -1,19 +1,19 @@
-'use client'
-import { cn } from '@/lib/utils'
-import { Product } from '@prisma/client'
-import { Search } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import { useClickAway, useDebounce } from 'react-use'
-import { Api } from '../../../services/api-client'
+"use client"
+import { cn } from "@/lib/utils"
+import { Product } from "@prisma/client"
+import { Search } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import React from "react"
+import { useClickAway, useDebounce } from "react-use"
+import { Api } from "../../../services/api-client"
 
 interface Props {
 	className?: string
 }
 
 export const SearchInput: React.FC<Props> = ({ className }) => {
-	const [searchQuery, setSearchQuery] = React.useState('')
+	const [searchQuery, setSearchQuery] = React.useState("")
 	const [focused, setFocused] = React.useState(false)
 	const [products, setProducts] = React.useState<Product[]>([])
 	const ref = React.useRef(null)
@@ -37,7 +37,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 
 	const onClickItem = () => {
 		setProducts([])
-		setSearchQuery('')
+		setSearchQuery("")
 		setFocused(false)
 	}
 
@@ -49,7 +49,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 			<div
 				ref={ref}
 				className={cn(
-					'flex rounded-2xl flex-1 justify-between relative h-11 z-30',
+					"flex rounded-2xl flex-1 justify-between relative h-11 z-30",
 					className
 				)}
 			>
@@ -67,8 +67,8 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 				{products.length > 0 && (
 					<div
 						className={cn(
-							'absolute w-full bg-white rounded-xl py-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30',
-							focused && 'visible opacity-100 top-12'
+							"absolute w-full bg-white rounded-xl py-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30",
+							focused && "visible opacity-100 top-12"
 						)}
 					>
 						{products.map(product => (

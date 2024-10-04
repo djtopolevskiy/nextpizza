@@ -1,14 +1,32 @@
+<<<<<<< HEAD
 import { Container } from "@/components/shared/container"
 import { Filters } from "@/components/shared/filters"
 import { ProductsGroupList } from "@/components/shared/products-group-list"
 import { Title } from "@/components/shared/title"
 import { TopBar } from "@/components/shared/top-bar"
 import { prisma } from "../../prisma/prisma-client"
+=======
+import { Container } from '@/components/shared/container'
+import { Filters } from '@/components/shared/filters'
+import { ProductsGroupList } from '@/components/shared/products-group-list'
+import { Title } from '@/components/shared/title'
+import { TopBar } from '@/components/shared/top-bar'
+import { prisma } from '../../prisma/prisma-client'
+>>>>>>> 7880345b03c57e10ca2caabda59c1ad911b7a688
 
 export default async function Home() {
 	const categories = await prisma.category.findMany({
 		include: {
+<<<<<<< HEAD
 			products: { include: { ingredients: true, productitem: true } },
+=======
+			products: {
+				include: {
+					ingredients: true,
+					items: true,
+				},
+			},
+>>>>>>> 7880345b03c57e10ca2caabda59c1ad911b7a688
 		},
 	})
 
@@ -36,6 +54,10 @@ export default async function Home() {
 											title={category.name}
 											categoryId={category.id}
 											items={category.products}
+<<<<<<< HEAD
+=======
+											id={category.id}
+>>>>>>> 7880345b03c57e10ca2caabda59c1ad911b7a688
 										/>
 									)
 							)}

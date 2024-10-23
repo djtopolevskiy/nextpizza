@@ -6,9 +6,16 @@ import {
 	ProductItem,
 } from '@prisma/client'
 
-export type CartItemDTO = CartItem & {
-	productItem: ProductItem & {
-		product: Product
+export type CartItemDTO = CartItem[] & {
+	id: CartItem['id']
+	quantity: CartItem['quantity']
+	productItem: CartItem[] & {
+		product: Product[] & {
+			name: Product['name']
+			imageUrl: Product['imageUrl']
+		}
+		size: ProductItem['size']
+		pizzaType: ProductItem['pizzaType']
 	}
 	ingredients: Ingredient[]
 }

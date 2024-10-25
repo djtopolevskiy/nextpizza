@@ -1,11 +1,12 @@
-'use client'
+"use client"
 
-import { ProductWithRelations } from '@/@types/prisma'
-import { useCartStore } from '@/shared/store'
-import React from 'react'
-import toast from 'react-hot-toast'
-import { ChoosePizzaForm } from './choose-pizza-form'
-import { ChooseProductForm } from './choose-product-form'
+// import { ProductWithRelations } from "@/@types/prisma"
+import { useCartStore } from "@/shared/store"
+import React from "react"
+import toast from "react-hot-toast"
+import { ProductWithRelations } from "../../../../@types/prisma"
+import { ChoosePizzaForm } from "./choose-pizza-form"
+import { ChooseProductForm } from "./choose-product-form"
 
 interface Props {
 	product: ProductWithRelations
@@ -33,11 +34,11 @@ export const ProductForm: React.FC<Props> = ({
 				ingredients,
 			})
 
-			toast.success(product.name + ' добавлена в корзину')
+			toast.success(product.name + " добавлена в корзину")
 
 			_onSubmit?.()
 		} catch (err) {
-			toast.error('Не удалось добавить товар в корзину')
+			toast.error("Не удалось добавить товар в корзину")
 			console.error(err)
 		}
 	}
@@ -47,7 +48,8 @@ export const ProductForm: React.FC<Props> = ({
 			<ChoosePizzaForm
 				imageUrl={product.imageUrl}
 				name={product.name}
-				ingredients={product.ingredients}
+				price={product.items[0].price}
+				ingredientsinform={product.ingredients}
 				items={product.items}
 				onSubmit={onSubmit}
 				loading={loading}

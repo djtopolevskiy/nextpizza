@@ -1,14 +1,14 @@
-import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza'
-import { usePizzaOptions } from '@/shared/hooks/use-pizza-options'
-import { getPizzaDetails } from '@/shared/lib/get-pizza-details'
-import { cn } from '@/shared/lib/utils'
-import { Ingredient, ProductItem } from '@prisma/client'
-import React from 'react'
-import { Button } from '../ui/button'
-import { GroupVariants } from './group-variants'
-import { IngredientItem } from './ingredient-item'
-import { PizzaImage } from './pizza_image'
-import { Title } from './title'
+import { PizzaSize, PizzaType, pizzaTypes } from "@/shared/constants/pizza"
+import { usePizzaOptions } from "@/shared/hooks/use-pizza-options"
+import { getPizzaDetails } from "@/shared/lib/get-pizza-details"
+import { cn } from "@/shared/lib/utils"
+import { Ingredient, ProductItem } from "@prisma/client"
+import React from "react"
+import { Button } from "../ui/button"
+import { GroupVariants } from "./group-variants"
+import { IngredientItem } from "./ingredient-item"
+import { PizzaImage } from "./pizza_image"
+import { Title } from "./title"
 
 interface Props {
 	imageUrl: string
@@ -57,7 +57,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 	}
 
 	return (
-		<div className={cn(className, 'flex flex-1')}>
+		<div className={cn(className, "flex flex-1")}>
 			<div className='flex items-center justify-center flex-1 relative w-full'>
 				<PizzaImage imageUrl={imageUrl} size={size} />
 			</div>

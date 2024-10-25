@@ -1,4 +1,4 @@
-import { CartItemDTO } from '../services/dto/cart.dto'
+import { CartItemDTO } from "../services/dto/cart.dto"
 
 export const calcCartItemTotalPrice = (item: CartItemDTO): number => {
 	const ingredientsPrice = item.ingredients?.reduce(
@@ -6,5 +6,5 @@ export const calcCartItemTotalPrice = (item: CartItemDTO): number => {
 		0
 	)
 
-	return (ingredientsPrice + item.productItem?.price) * item.quantity
+	return (ingredientsPrice + item.productitem.price) * item.quantity
 }

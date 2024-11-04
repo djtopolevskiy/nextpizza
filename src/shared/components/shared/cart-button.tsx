@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
-import { Button } from '@/shared/components/ui/button'
-import { cn } from '@/shared/lib/utils'
-import { useCartStore } from '@/shared/store'
-import { ArrowRight, ShoppingCart } from 'lucide-react'
-import React from 'react'
-import { CartDrawer } from './cart-drawer'
+import { Button } from "@/shared/components/ui/button"
+import { cn } from "@/shared/lib/utils"
+import { useCartStore } from "@/shared/store"
+import { ArrowRight, ShoppingCart } from "lucide-react"
+import React from "react"
+import { CartDrawer } from "./cart-drawer"
 
 interface Props {
 	className?: string
@@ -17,13 +17,13 @@ export const CartButton: React.FC<Props> = ({ className }) => {
 		state.items,
 		state.loading,
 	])
-	// console.log(totalAmount)
+	console.log(totalAmount)
 
 	return (
 		<CartDrawer>
 			<Button
 				loading={loading}
-				className={cn('group relative', { 'w-[105px]': loading }, className)}
+				className={cn("group relative", { "w-[105px]": loading }, className)}
 			>
 				<b>{totalAmount} ₽</b>
 				<span className='h-full w-[1px] bg-white/30 mx-3' />

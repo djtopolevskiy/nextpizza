@@ -1,5 +1,5 @@
-import { prisma } from '../../../prisma/prisma-client'
-import { calcCartItemTotalPrice } from './calc-cart-item-total-price'
+import { prisma } from "../../../prisma/prisma-client"
+import { calcCartItemTotalPrice } from "./calc-cart-item-total-price"
 
 export const updateCartTotalAmount = async (token: string) => {
 	const userCart = await prisma.cart.findFirst({
@@ -9,10 +9,10 @@ export const updateCartTotalAmount = async (token: string) => {
 		include: {
 			items: {
 				orderBy: {
-					createdAt: 'desc',
+					createdAt: "desc",
 				},
 				include: {
-					productitem: {
+					productItem: {
 						include: {
 							product: true,
 						},
@@ -41,10 +41,10 @@ export const updateCartTotalAmount = async (token: string) => {
 		include: {
 			items: {
 				orderBy: {
-					createdAt: 'desc',
+					createdAt: "desc",
 				},
 				include: {
-					productitem: {
+					productItem: {
 						include: {
 							product: true,
 						},

@@ -1,12 +1,13 @@
-import { findOrCreateCart } from '@/shared/lib/find-or-create-cart'
-import { updateCartTotalAmount } from '@/shared/lib/update-cart-total-amount'
-import { CreateCartItemValues } from '@/shared/services/dto/cart.dto'
-import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '../../../../prisma/prisma-client'
+import { findOrCreateCart } from "@/shared/lib/find-or-create-cart"
+import { updateCartTotalAmount } from "@/shared/lib/update-cart-total-amount"
+import { CreateCartItemValues } from "@/shared/services/dto/cart.dto"
+import { NextRequest, NextResponse } from "next/server"
+import { prisma } from "../../../../prisma/prisma-client"
 
 export async function GET(req: NextRequest) {
 	try {
-		const token = req.cookies.get('cartToken')?.value
+		const token = req.cookies.get("cartToken")?.value
+		// console.log("upzagal", token)
 
 		if (!token) {
 			return NextResponse.json({ totalAmount: 0, items: [] })
@@ -21,9 +22,9 @@ export async function GET(req: NextRequest) {
 			},
 			include: {
 				items: {
-					orderBy: { createdAt: 'desc' },
+					orderBy: { createdAt: "desc" },
 					include: {
-						productitem: {
+						productItem: {
 							include: {
 								product: true,
 							},
@@ -42,7 +43,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	try {
-		let token = req.cookies.get('cartToken')?.value
+		let token = req.cookies.get("cartToken")?.value
 
 		if (!token) {
 			token = crypto.randomUUID()
@@ -55,7 +56,7 @@ export async function POST(req: NextRequest) {
 		const findCartItem = await prisma.cartItem.findFirst({
 			where: {
 				cartId: userCart.id,
-				productitemId: data.productItemId,
+				productItemId: data.productItemId,
 				ingredients: {
 					every: {
 						id: { in: data.ingredients },
@@ -78,7 +79,7 @@ export async function POST(req: NextRequest) {
 			await prisma.cartItem.create({
 				data: {
 					cartId: userCart.id,
-					productitemId: data.productItemId,
+					productItemId: data.productItemId,
 					quantity: 1,
 					ingredients: { connect: data.ingredients?.map(id => ({ id })) },
 				},
@@ -88,12 +89,12 @@ export async function POST(req: NextRequest) {
 		const updatedUserCart = await updateCartTotalAmount(token)
 
 		const resp = NextResponse.json(updatedUserCart)
-		resp.cookies.set('cartToken', token)
+		resp.cookies.set("cartToken", token)
 		return resp
 	} catch (error) {
-		console.log('[CART_POST] Server error', error)
+		console.log("[CART_POST] Server error", error)
 		return NextResponse.json(
-			{ message: 'Не удалось создать корзину' },
+			{ message: "Не удалось создать корзину" },
 			{ status: 500 }
 		)
 	}

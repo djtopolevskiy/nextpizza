@@ -1,111 +1,193 @@
 export const categories = [
 	{
-		name: 'Pizza',
+		name: "Пиццы",
 	},
 	{
-		name: 'Burser',
+		name: "Завтрак",
 	},
 	{
-		name: 'Ice-Cream',
+		name: "Закуски",
 	},
 	{
-		name: 'Juces',
+		name: "Коктейли",
 	},
 	{
-		name: 'Freeze',
-	},
-	{
-		name: 'Toys',
+		name: "Напитки",
 	},
 ]
 
-export const ingredients = [
+export const _ingredients = [
 	{
-		name: 'Popularity',
-		price: 10,
-		imageUrl: '/000D3A22FA54A81411E9AFA69C1FE796.png',
+		name: "Сырный бортик",
+		price: 179,
+		imageUrl: "/ingr_vatchina.png",
 	},
 	{
-		name: 'Shampinjon',
-		price: 30,
-		imageUrl: '/000D3A22FA54A81411E9AFA67259A324.png',
+		name: "Сливочная моцарелла",
+		price: 79,
+		imageUrl: "/ingr_vatchina.png",
 	},
 	{
-		name: 'Capch',
-		price: 40,
-		imageUrl: '/000D3A39D824A82E11E9AFA5B328D35A.png',
+		name: "Сыры чеддер и пармезан",
+		price: 79,
+		imageUrl: "/ingr_vatchina.png",
 	},
 	{
-		name: 'Tomato',
-		price: 50,
-		imageUrl: '/000D3A39D824A82E11E9AFA7AC1A1D67.png',
+		name: "Острый перец халапеньо",
+		price: 59,
+		imageUrl: "/ingr_vatchina.png",
 	},
 	{
-		name: 'Veggie',
-		price: 60,
-		imageUrl: '/000D3A39D824A82E11E9AFA61B9A8D61.png',
+		name: "Нежный цыпленок",
+		price: 79,
+		imageUrl: "/ingr_vatchina.png",
 	},
 	{
-		name: 'Becon',
-		price: 70,
-		imageUrl: '/000D3A39D824A82E11E9AFA637AAB68F.png',
+		name: "Шампиньоны",
+		price: 59,
+		imageUrl: "/ingr_shampinion.png",
 	},
 	{
-		name: 'SolTomato',
-		price: 80,
-		imageUrl: '/11ee95b6bfdf98fb88a113db92d7b3df.png',
+		name: "Ветчина",
+		price: 79,
+		imageUrl: "/ingr_vatchina.png",
 	},
 	{
-		name: 'SolTomato2',
-		price: 80,
-		imageUrl: '/11ee95b6bfdf98fb88a113db92d7b3df.png',
+		name: "Пикантная пепперони",
+		price: 79,
+		imageUrl: "/pizza_pikant_peperoni.jpg",
 	},
 	{
-		name: 'SolTomato3',
-		price: 80,
-		imageUrl: '/11ee95b6bfdf98fb88a113db92d7b3df.png',
+		name: "Острая чоризо",
+		price: 79,
+		imageUrl: "/ostraya_chorizo.jpg",
 	},
 	{
-		name: 'SolTomato4',
-		price: 80,
-		imageUrl: '/11ee95b6bfdf98fb88a113db92d7b3df.png',
+		name: "Маринованные огурчики",
+		price: 59,
+		imageUrl: "/ingr_vatchina.png",
 	},
 	{
-		name: 'SolTomato5',
-		price: 80,
-		imageUrl: '/11ee95b6bfdf98fb88a113db92d7b3df.png',
+		name: "Свежие томаты",
+		price: 59,
+		imageUrl: "/ingr_vatchina.png",
 	},
 	{
-		name: 'SolTomato6',
-		price: 80,
-		imageUrl: '/11ee95b6bfdf98fb88a113db92d7b3df.png',
+		name: "Красный лук",
+		price: 59,
+		imageUrl: "/ingr_vatchina.png",
+	},
+	{
+		name: "Сочные ананасы",
+		price: 59,
+		imageUrl: "/ingr_vatchina.png",
+	},
+	{
+		name: "Итальянские травы",
+		price: 39,
+		imageUrl: "/ingr_vatchina.png",
+	},
+	{
+		name: "Сладкий перец",
+		price: 59,
+		imageUrl: "/ingr_vatchina.png",
+	},
+	{
+		name: "Кубики брынзы",
+		price: 79,
+		imageUrl: "/ingr_vatchina.png",
+	},
+	{
+		name: "Митболы",
+		price: 79,
+		imageUrl: "/ingr_vatchina.png",
 	},
 ].map((obj, index) => ({ id: index + 1, ...obj }))
 
 export const products = [
 	{
-		name: 'Кофе капуччино',
-		imageUrl: '/kofe_capuccino.avif',
+		name: "Омлет с ветчиной и грибами",
+		imageUrl: "/ingr_vatchina.png",
 		categoryId: 2,
 	},
 	{
-		name: 'Kofe kapuchino',
-		imageUrl: '/kofe_capuccino.avif',
+		name: "Омлет с пепперони",
+		imageUrl: "/ingr_vatchina.png",
 		categoryId: 2,
 	},
 	{
-		name: 'Молочний коктейль',
-		imageUrl: '/mol_kokteil.avif',
+		name: "Кофе Латте",
+		imageUrl: "/ingr_vatchina.png",
 		categoryId: 2,
 	},
 	{
-		name: 'Омлет з беконом',
-		imageUrl: '/omlet_bekon.avif',
-		categoryId: 2,
+		name: "Дэнвич ветчина и сыр",
+		imageUrl: "/ingr_vatchina.png",
+		categoryId: 3,
 	},
 	{
-		name: 'Сирники',
-		imageUrl: '/surniki.avif',
-		categoryId: 2,
+		name: "Куриные наггетсы",
+		imageUrl: "/ingr_vatchina.png",
+		categoryId: 3,
+	},
+	{
+		name: "Картофель из печи с соусом 🌱",
+		imageUrl: "/surniki.avif",
+		categoryId: 3,
+	},
+	{
+		name: "Додстер",
+		imageUrl: "/omlet_bekon.avif",
+		categoryId: 3,
+	},
+	{
+		name: "Острый Додстер 🌶️🌶️",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 3,
+	},
+	{
+		name: "Банановый молочный коктейль",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 4,
+	},
+	{
+		name: "Карамельное яблоко молочный коктейль",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 4,
+	},
+	{
+		name: "Молочный коктейль с печеньем Орео",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 4,
+	},
+	{
+		name: "Классический молочный коктейль 👶",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 4,
+	},
+	{
+		name: "Ирландский Капучино",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 5,
+	},
+	{
+		name: "Кофе Карамельный капучино",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 5,
+	},
+	{
+		name: "Кофе Кокосовый латте",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 5,
+	},
+	{
+		name: "Кофе Американо",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 5,
+	},
+	{
+		name: "Кофе Латте",
+		imageUrl: "/mol_kokteil.avif",
+		categoryId: 5,
 	},
 ]

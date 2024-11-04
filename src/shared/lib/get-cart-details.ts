@@ -19,22 +19,23 @@ interface ReturnProps {
 }
 
 export const getCartDetails = (data: CartDTO): ReturnProps => {
-	// console.log("typeofup", typeof data.items[0].productitem)
+	// console.log("typeofup", typeof data.items[0].productItem.product)
 	const items = data.items.map(item => ({
 		id: item.id,
 		quantity: item.quantity,
-		name: item.productitem.product.name,
-		imageUrl: item.productitem.product.imageUrl,
+		name: item.productItem.product.name,
+		imageUrl: item.productItem.product.imageUrl,
 		price: calcCartItemTotalPrice(item),
-		pizzaSize: item.productitem.size,
-		pizzaType: item.productitem.pizzaType,
+		pizzaSize: item.productItem.size,
+		pizzaType: item.productItem.pizzaType,
 		disabled: false,
 		ingredients: item.ingredients.map(ingredient => ({
 			name: ingredient.name,
 			price: ingredient.price,
 		})),
 	})) as CartStateItem[]
-	// console.log(items[0].price, "typeofdown", typeof items[0].pizzaSize)
+	console.log("data.totalAmount", data.totalAmount)
+
 	return {
 		items,
 		totalAmount: data.totalAmount,

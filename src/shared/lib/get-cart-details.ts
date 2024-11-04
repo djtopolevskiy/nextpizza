@@ -1,5 +1,5 @@
-import { CartDTO } from "../services/dto/cart.dto"
-import { calcCartItemTotalPrice } from "./calc-cart-item-total-price"
+import { CartDTO } from '../services/dto/cart.dto'
+import { calcCartItemTotalPrice } from './calc-cart-item-total-price'
 
 export type CartStateItem = {
 	id: number
@@ -19,7 +19,7 @@ interface ReturnProps {
 }
 
 export const getCartDetails = (data: CartDTO): ReturnProps => {
-	// console.log("typeofup", typeof data.items[0].productItem.product)
+	console.log('typeofup', typeof data)
 	const items = data.items.map(item => ({
 		id: item.id,
 		quantity: item.quantity,
@@ -34,7 +34,7 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
 			price: ingredient.price,
 		})),
 	})) as CartStateItem[]
-	console.log("data.totalAmount", data.totalAmount)
+	console.log('data.totalAmount', items)
 
 	return {
 		items,

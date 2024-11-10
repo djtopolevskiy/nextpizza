@@ -1,13 +1,12 @@
-import { findOrCreateCart } from '@/shared/lib/find-or-create-cart'
-import { updateCartTotalAmount } from '@/shared/lib/update-cart-total-amount'
-import { CreateCartItemValues } from '@/shared/services/dto/cart.dto'
-import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '../../../../prisma/prisma-client'
+import { findOrCreateCart } from "@/shared/lib/find-or-create-cart"
+import { updateCartTotalAmount } from "@/shared/lib/update-cart-total-amount"
+import { CreateCartItemValues } from "@/shared/services/dto/cart.dto"
+import { NextRequest, NextResponse } from "next/server"
+import { prisma } from "../../../../prisma/prisma-client"
 
 export async function GET(req: NextRequest) {
 	try {
-		const token = req.cookies.get('cartToken')?.value
-		// console.log("upzagal", token)
+		const token = req.cookies.get("cartToken")?.value
 
 		if (!token) {
 			return NextResponse.json({ totalAmount: 0, items: [] })
@@ -22,7 +21,7 @@ export async function GET(req: NextRequest) {
 			},
 			include: {
 				items: {
-					orderBy: { createdAt: 'desc' },
+					orderBy: { createdAt: "desc" },
 					include: {
 						productItem: {
 							include: {
@@ -34,7 +33,6 @@ export async function GET(req: NextRequest) {
 				},
 			},
 		})
-		// console.log('userCart', userCart)
 		return NextResponse.json(userCart)
 	} catch (error) {
 		console.log(error)
@@ -43,16 +41,19 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	try {
-		let token = req.cookies.get('cartToken')?.value
+		let token = req.cookies.get("cartToken")?.value
 
 		if (!token) {
 			token = crypto.randomUUID()
 		}
 
+		// Поиск или создание корзины
 		const userCart = await findOrCreateCart(token)
 
+		// Получаем данные из запроса
 		const data = (await req.json()) as CreateCartItemValues
 
+		// Поиск товара в корзине
 		const findCartItem = await prisma.cartItem.findFirst({
 			where: {
 				cartId: userCart.id,
@@ -88,14 +89,16 @@ export async function POST(req: NextRequest) {
 
 		const updatedUserCart = await updateCartTotalAmount(token)
 
+		// Возвращаем корзину
 		const resp = NextResponse.json(updatedUserCart)
-		resp.cookies.set('cartToken', token)
-		console.log(resp)
+		// Устанавливаем куки
+		resp.cookies.set("cartToken", token)
+		// Возвращаем корзину
 		return resp
 	} catch (error) {
-		console.log('[CART_POST] Server error', error)
+		console.log("[CART_POST] Server error", error)
 		return NextResponse.json(
-			{ message: 'Не удалось создать корзину' },
+			{ message: "Не удалось создать корзину" },
 			{ status: 500 }
 		)
 	}

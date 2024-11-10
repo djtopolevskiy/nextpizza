@@ -1,14 +1,14 @@
-import { PizzaSize, PizzaType, pizzaTypes } from "@/shared/constants/pizza"
-import { usePizzaOptions } from "@/shared/hooks/use-pizza-options"
-import { getPizzaDetails } from "@/shared/lib/get-pizza-details"
-import { cn } from "@/shared/lib/utils"
-import { Ingredient, ProductItem } from "@prisma/client"
-import React from "react"
-import { Button } from "../ui/button"
-import { GroupVariants } from "./group-variants"
-import { IngredientItem } from "./ingredient-item"
-import { PizzaImage } from "./pizza_image"
-import { Title } from "./title"
+import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza'
+import { usePizzaOptions } from '@/shared/hooks/use-pizza-options'
+import { getPizzaDetails } from '@/shared/lib/get-pizza-details'
+import { cn } from '@/shared/lib/utils'
+import { Ingredient, ProductItem } from '@prisma/client'
+import React from 'react'
+import { Button } from '../ui/button'
+import { GroupVariants } from './group-variants'
+import { IngredientItem } from './ingredient-item'
+import { PizzaImage } from './pizza_image'
+import { Title } from './title'
 
 interface Props {
 	imageUrl: string
@@ -16,7 +16,7 @@ interface Props {
 	price: number
 	ingredientsinform: Ingredient[]
 	loading?: boolean
-	onSubmit?: VoidFunction
+	onSubmit: (itemId: number, ingredients: number[]) => void
 	className?: string
 	items: ProductItem[]
 	onClickAddCart?: VoidFunction
@@ -32,7 +32,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 	className,
 	loading,
 	items,
-	onClickAddCart,
+	onSubmit,
 }) => {
 	const {
 		size,
@@ -42,6 +42,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 		selectIngredients,
 		addIngredients,
 		availableSizes,
+		currentItemId,
 	} = usePizzaOptions(items)
 
 	const { totalPrice, textDetails } = getPizzaDetails(
@@ -53,11 +54,13 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 	)
 
 	const handleClickAdd = () => {
-		onClickAddCart?.()
+		if (currentItemId) {
+			onSubmit(currentItemId, Array.from(selectIngredients))
+		}
 	}
 
 	return (
-		<div className={cn(className, "flex flex-1")}>
+		<div className={cn(className, 'flex flex-1')}>
 			<div className='flex items-center justify-center flex-1 relative w-full'>
 				<PizzaImage imageUrl={imageUrl} size={size} />
 			</div>
@@ -80,7 +83,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 					/>
 				</div>
 				<div className='bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar mt-5'>
-					<div className='flex flex-col-3 gap-3'>
+					<div className='grid grid-cols-3 gap-3'>
 						{ingredientsinform.map(ingredient => (
 							<IngredientItem
 								key={ingredient.id}

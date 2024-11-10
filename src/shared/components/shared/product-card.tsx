@@ -28,7 +28,6 @@ export const ProductCard: React.FC<Props> = ({
 	ingredients,
 }) => {
 	return (
-		// (price = Math.floor(Math.random() * 100)),
 		<div className={cn(className)}>
 			<Link href={`/product/${id}`}>
 				<div className='flex justify-center p-6 bg-secondary rounded-lg h-[260px]'>
@@ -38,8 +37,6 @@ export const ProductCard: React.FC<Props> = ({
 			<Title text={name} size='sm' className='mb-1 mt-3 font-bold' />
 			<p className='text-sm text-gray-400'>
 				{ingredients?.join(', ') || 'Нет ингредиентов'}
-				{/* Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус
-				альфредо, чеснок */}
 			</p>
 
 			<div className='flex justify-between items-center mt-4'>

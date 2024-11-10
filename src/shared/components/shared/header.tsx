@@ -72,6 +72,7 @@ export const Header: React.FC<Props> = ({
 
 				<div className='flex items-center gap-3'>
 					<Button variant='outline'>Войти</Button>
+					{hasCart && <CartButton />}
 				</div>
 
 				{/* {hasSearch && (
@@ -85,7 +86,7 @@ export const Header: React.FC<Props> = ({
 
 					{/* <ProfileButton onClickOpenModal={onClickOpenAuthModal} /> */}
 
-					{hasCart && <CartButton />}
+					{/* {hasCart && <CartButton />} */}
 				</div>
 			</Container>
 		</header>

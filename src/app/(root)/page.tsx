@@ -3,6 +3,7 @@ import { Filters } from "@/shared/components/shared/filters"
 import { ProductsGroupList } from "@/shared/components/shared/products-group-list"
 import { Title } from "@/shared/components/shared/title"
 import { TopBar } from "@/shared/components/shared/top-bar"
+import { Suspense } from "react"
 import { prisma } from "../../../prisma/prisma-client"
 
 export default async function Home() {
@@ -24,7 +25,9 @@ export default async function Home() {
 			<Container className='mt-10 pb-14'>
 				<div className='flex gap-[80px]'>
 					<div className='w-[250px]'>
-						<Filters />
+						<Suspense>
+							<Filters />
+						</Suspense>
 					</div>
 					<div className='flex-1'>
 						<div className='flex flex-col gap-16'>

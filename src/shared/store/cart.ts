@@ -1,7 +1,7 @@
-import { create } from 'zustand'
-import { CartStateItem, getCartDetails } from '../lib/get-cart-details'
-import { Api } from '../services/api-client'
-import { CreateCartItemValues } from '../services/dto/cart.dto'
+import { create } from "zustand"
+import { CartStateItem, getCartDetails } from "../lib/get-cart-details"
+import { Api } from "../services/api-client"
+import { CreateCartItemValues } from "../services/dto/cart.dto"
 
 export interface CartState {
 	/*информация о том что корзина загрузилась*/
@@ -30,9 +30,7 @@ export const useCartStore = create<CartState>((set, get) => ({
 		try {
 			set({ loading: true, error: false })
 			const data = await Api.cart.getCart()
-			console.log('data-cartts', data)
 			set(getCartDetails(data))
-			// console.log("getCartDetails--cartts", getCartDetails(data))
 		} catch (error) {
 			console.error(error)
 			set({ error: true })

@@ -1,21 +1,21 @@
-'use client'
+"use client"
 
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogTitle,
-} from '@/shared/components/ui/dialog'
-import { cn } from '@/shared/lib/utils'
-import { useCartStore } from '@/shared/store'
-import { Ingredient, ProductItem } from '@prisma/client'
-import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
-import { useRouter } from 'next/navigation'
-import React from 'react'
-import toast from 'react-hot-toast'
-import { ProductWithRelations } from '../../../../../@types/prisma'
-import { ChoosePizzaForm } from '../choose-pizza-form'
-import { ChooseProductForm } from '../choose-product-form'
+} from "@/shared/components/ui/dialog"
+import { cn } from "@/shared/lib/utils"
+import { useCartStore } from "@/shared/store"
+import { Ingredient, ProductItem } from "@prisma/client"
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden"
+import { useRouter } from "next/navigation"
+import React from "react"
+import toast from "react-hot-toast"
+import { ProductWithRelations } from "../../../../../@types/prisma"
+import { ChoosePizzaForm } from "../choose-pizza-form"
+import { ChooseProductForm } from "../choose-product-form"
 
 interface Props {
 	product: ProductWithRelations
@@ -42,15 +42,16 @@ export const ChooseProductModal: React.FC<Props> = ({
 	const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
 		try {
 			const itemId = productItemId ?? firstItem.id
+
 			await addCartItem({
 				productItemId: itemId,
 				ingredients,
 			})
 
-			toast.success(product.name + ' добавлена в корзину')
+			toast.success(product.name + " добавлена в корзину")
 			router.back()
 		} catch (error) {
-			toast.error('Не удалось добавить товар в корзину')
+			toast.error("Не удалось добавить товар в корзину")
 			console.error(error)
 		}
 	}
@@ -59,7 +60,7 @@ export const ChooseProductModal: React.FC<Props> = ({
 		<Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
 			<DialogContent
 				className={cn(
-					'p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden',
+					"p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden",
 					className
 				)}
 			>

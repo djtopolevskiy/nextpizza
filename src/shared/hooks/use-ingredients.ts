@@ -1,6 +1,6 @@
-import { Ingredient } from '@prisma/client'
-import React from 'react'
-import { Api } from '../services/api-client'
+import { Ingredient } from "@prisma/client"
+import React from "react"
+import { Api } from "../services/api-client"
 
 export const useIngredients = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks

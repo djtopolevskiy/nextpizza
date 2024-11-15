@@ -25,7 +25,7 @@ export default function CheckoutPage() {
 	const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
 		useCart()
 
-	const { data: session } = useSession()
+	// const { data: session } = useSession()
 
 	const form = useForm<CheckoutFormValues>({
 		resolver: zodResolver(checkoutFormSchema),
@@ -39,20 +39,20 @@ export default function CheckoutPage() {
 		},
 	})
 
-	React.useEffect(() => {
-		async function fetchUserInfo() {
-			const data = await Api.auth.getMe()
-			const [firstName, lastName] = data.fullName.split(" ")
+	// React.useEffect(() => {
+	// 	async function fetchUserInfo() {
+	// 		const data = await Api.auth.getMe()
+	// 		const [firstName, lastName] = data.fullName.split(" ")
 
-			form.setValue("firstName", firstName)
-			form.setValue("lastName", lastName)
-			form.setValue("email", data.email)
-		}
+	// 		form.setValue("firstName", firstName)
+	// 		form.setValue("lastName", lastName)
+	// 		form.setValue("email", data.email)
+	// 	}
 
-		if (session) {
-			fetchUserInfo()
-		}
-	}, [session])
+	// 	if (session) {
+	// 		fetchUserInfo()
+	// 	}
+	// }, [session])
 
 	const onSubmit = async (data: CheckoutFormValues) => {
 		try {

@@ -16,6 +16,9 @@
 
 ## Getting Started
 
+Nexpizza is an educational project created for self-study purposes. The project Archakov Dennis was taken as a basis.
+(https://github.com/Archakov06/next-pizza/tree/main)
+
 First, run the development server:
 
 ```bash

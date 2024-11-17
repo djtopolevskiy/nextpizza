@@ -8,9 +8,11 @@
 ![Static Badge](https://img.shields.io/badge/lucide-0.436.0-pink)
 ![Static Badge](https://img.shields.io/badge/next_auth-4.24.10-red)
 ![Static Badge](https://img.shields.io/badge/qs-6.13.0-darkorange)
-![Static Badge](https://img.shields.io/badge/tailwindcss-1.0.7-blue)
+![Static Badge](https://img.shields.io/badge/tailwindcss-3.4.1-blue)
 ![Static Badge](https://img.shields.io/badge/zod-3.23.8-steelblue)
 ![Static Badge](https://img.shields.io/badge/zustand-4.5.5-brown)
+![Static Badge](https://img.shields.io/badge/typescript-5-blue)
+![Static Badge](https://img.shields.io/badge/postgresql-16-steelblue)
 
 ## Getting Started
 

@@ -1,5 +1,16 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# **NEXTPIZZA**
+
+![Static Badge](https://img.shields.io/badge/next-14.2.9-blue)
+![Static Badge](https://img.shields.io/badge/react-18-red)
+![Static Badge](https://img.shields.io/badge/prisma-5.19.1-springgreen)
+![Static Badge](https://img.shields.io/badge/axios-1.7.7-green)
+![Static Badge](https://img.shields.io/badge/bcrypt-5.1.1-deepskyblue)
+![Static Badge](https://img.shields.io/badge/lucide-0.436.0-pink)
+![Static Badge](https://img.shields.io/badge/next_auth-4.24.10-red)
+![Static Badge](https://img.shields.io/badge/qs-6.13.0-darkorange)
+![Static Badge](https://img.shields.io/badge/tailwindcss-1.0.7-blue)
+![Static Badge](https://img.shields.io/badge/zod-3.23.8-steelblue)
+![Static Badge](https://img.shields.io/badge/zustand-4.5.5-brown)
 
 ## Getting Started
 
@@ -34,7 +45,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-=======
+# Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
 # nextpizza
->>>>>>> 8541cf9becd85b974d8befe6743c98a98c48ce93

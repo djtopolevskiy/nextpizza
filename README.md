@@ -1,4 +1,4 @@
-# **NEXTPIZZA**
+<h1 style="color:orange">NEXTPIZZA</h1>
 
 ![Static Badge](https://img.shields.io/badge/next-14.2.9-blue)
 ![Static Badge](https://img.shields.io/badge/react-18-red)
@@ -14,7 +14,7 @@
 ![Static Badge](https://img.shields.io/badge/typescript-5-blue)
 ![Static Badge](https://img.shields.io/badge/postgresql-16-steelblue)
 
-## Getting Started
+<h2 style="color:tomato">Getting Started</h2>
 
 Nexpizza is an educational project created for self-study purposes. The project Archakov Dennis was taken as a basis.
 (https://github.com/Archakov06/next-pizza/tree/main)

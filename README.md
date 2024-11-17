@@ -1,4 +1,6 @@
 <h1><span style="color: red;">NEXTPIZZA</span></h1>
+<code style="color : orange">text1</code>
+<code style="color : #FFD700">text2</code>
 
 ![Static Badge](https://img.shields.io/badge/next-14.2.9-blue)
 ![Static Badge](https://img.shields.io/badge/react-18-red)

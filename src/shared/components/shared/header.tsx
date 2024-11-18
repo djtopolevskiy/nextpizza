@@ -1,14 +1,14 @@
-'use client'
+"use client"
 
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image"
+import React from "react"
 
-import { cn } from '@/shared/lib/utils'
-import Link from 'next/link'
-import { Button } from '../ui/button'
-import { CartButton } from './cart-button'
-import { Container } from './container'
-import { SearchInput } from './search-input'
+import { cn } from "@/shared/lib/utils"
+import Link from "next/link"
+import { Button } from "../ui/button"
+import { CartButton } from "./cart-button"
+import { Container } from "./container"
+import { SearchInput } from "./search-input"
 // import { AuthModal } from './modals/auth-modal';
 // import { ProfileButton } from './profile-button';
 // import toast from 'react-hot-toast';
@@ -21,7 +21,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({
 	className,
-	// hasSearch = true,
+	hasSearch = true,
 	hasCart = true,
 }) => {
 	// const [openAuthModal, setOpenAuthModal] = React.useState(false)
@@ -52,7 +52,7 @@ export const Header: React.FC<Props> = ({
 	// const onClickOpenAuthModal = () => setOpenAuthModal(true)
 
 	return (
-		<header className={cn('border-b border-gray-100', className)}>
+		<header className={cn("border-b border-gray-100", className)}>
 			<Container className='flex items-center justify-between py-8'>
 				<Link href='/'>
 					<div className='flex items-center gap-4'>
@@ -65,29 +65,24 @@ export const Header: React.FC<Props> = ({
 						</div>
 					</div>
 				</Link>
-
-				<div className='mx-10 flex-1'>
-					<SearchInput />
-				</div>
+				{hasSearch && (
+					<div className='mx-10 flex-1'>
+						<SearchInput />
+					</div>
+				)}
 
 				<div className='flex items-center gap-3'>
 					<Button variant='outline'>Войти</Button>
 					{hasCart && <CartButton />}
 				</div>
 
-				{/* {hasSearch && (
-					<div className='mx-10 flex-1'>
-						<SearchInput />
-					</div>
-				)} */}
+				{/* <div className='flex items-center gap-3'> */}
+				{/* <AuthModal open={openAuthModal} onClose={onClickOpenAuthModal} /> */}
 
-				<div className='flex items-center gap-3'>
-					{/* <AuthModal open={openAuthModal} onClose={onClickOpenAuthModal} /> */}
+				{/* <ProfileButton onClickOpenModal={onClickOpenAuthModal} /> */}
 
-					{/* <ProfileButton onClickOpenModal={onClickOpenAuthModal} /> */}
-
-					{/* {hasCart && <CartButton />} */}
-				</div>
+				{/* {hasCart && <CartButton />} */}
+				{/* </div> */}
 			</Container>
 		</header>
 	)

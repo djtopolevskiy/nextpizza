@@ -1,15 +1,13 @@
-"use client"
+'use client'
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { FormProvider, useForm } from "react-hook-form"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { FormProvider, useForm } from 'react-hook-form'
 
-import { createOrder } from "@/app/actions"
-import { CheckoutFormValues, checkoutFormSchema } from "@/shared/constants"
-import { useCart } from "@/shared/hooks"
-import { Api } from "@/shared/services/api-client"
-import { useSession } from "next-auth/react"
-import React from "react"
-import toast from "react-hot-toast"
+import { createOrder } from '@/app/actions'
+import { CheckoutFormValues, checkoutFormSchema } from '@/shared/constants'
+import { useCart } from '@/shared/hooks'
+import React from 'react'
+import toast from 'react-hot-toast'
 import {
 	CheckoutAddressForm,
 	CheckoutCart,
@@ -17,7 +15,7 @@ import {
 	CheckoutSidebar,
 	Container,
 	Title,
-} from "./../../../shared/components/shared"
+} from './../../../shared/components/shared'
 // import CheckoutLayout from "../layout"
 
 export default function CheckoutPage() {
@@ -30,12 +28,12 @@ export default function CheckoutPage() {
 	const form = useForm<CheckoutFormValues>({
 		resolver: zodResolver(checkoutFormSchema),
 		defaultValues: {
-			email: "",
-			firstName: "",
-			lastName: "",
-			phone: "",
-			address: "",
-			comment: "",
+			email: '',
+			firstName: '',
+			lastName: '',
+			phone: '',
+			address: '',
+			comment: '',
 		},
 	})
 
@@ -57,11 +55,12 @@ export default function CheckoutPage() {
 	const onSubmit = async (data: CheckoutFormValues) => {
 		try {
 			setSubmitting(true)
+			console.log(data)
 
 			const url = await createOrder(data)
 
-			toast.error("Заказ успешно оформлен! 📝 Переход на оплату... ", {
-				icon: "✅",
+			toast.error('Заказ успешно оформлен! 📝 Переход на оплату... ', {
+				icon: '✅',
 			})
 
 			if (url) {
@@ -70,8 +69,8 @@ export default function CheckoutPage() {
 		} catch (err) {
 			console.log(err)
 			setSubmitting(false)
-			toast.error("Не удалось создать заказ", {
-				icon: "❌",
+			toast.error('Не удалось создать заказ', {
+				icon: '❌',
 			})
 		}
 	}
@@ -79,9 +78,9 @@ export default function CheckoutPage() {
 	const onClickCountButton = (
 		id: number,
 		quantity: number,
-		type: "plus" | "minus"
+		type: 'plus' | 'minus'
 	) => {
-		const newQuantity = type === "plus" ? quantity + 1 : quantity - 1
+		const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1
 		updateItemQuantity(id, newQuantity)
 	}
 
@@ -106,11 +105,11 @@ export default function CheckoutPage() {
 							/>
 
 							<CheckoutPersonalForm
-								className={loading ? "opacity-40 pointer-events-none" : ""}
+								className={loading ? 'opacity-40 pointer-events-none' : ''}
 							/>
 
 							<CheckoutAddressForm
-								className={loading ? "opacity-40 pointer-events-none" : ""}
+								className={loading ? 'opacity-40 pointer-events-none' : ''}
 							/>
 						</div>
 

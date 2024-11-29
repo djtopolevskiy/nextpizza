@@ -1,13 +1,13 @@
-'use client'
+"use client"
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { FormProvider, useForm } from 'react-hook-form'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { FormProvider, useForm } from "react-hook-form"
 
-import { createOrder } from '@/app/actions'
-import { CheckoutFormValues, checkoutFormSchema } from '@/shared/constants'
-import { useCart } from '@/shared/hooks'
-import React from 'react'
-import toast from 'react-hot-toast'
+import { createOrder } from "@/app/actions"
+import { CheckoutFormValues, checkoutFormSchema } from "@/shared/constants"
+import { useCart } from "@/shared/hooks"
+import React from "react"
+import toast from "react-hot-toast"
 import {
 	CheckoutAddressForm,
 	CheckoutCart,
@@ -15,7 +15,7 @@ import {
 	CheckoutSidebar,
 	Container,
 	Title,
-} from './../../../shared/components/shared'
+} from "./../../../shared/components/shared"
 // import CheckoutLayout from "../layout"
 
 export default function CheckoutPage() {
@@ -28,12 +28,12 @@ export default function CheckoutPage() {
 	const form = useForm<CheckoutFormValues>({
 		resolver: zodResolver(checkoutFormSchema),
 		defaultValues: {
-			email: '',
-			firstName: '',
-			lastName: '',
-			phone: '',
-			address: '',
-			comment: '',
+			email: "",
+			firstName: "",
+			lastName: "",
+			phone: "",
+			address: "",
+			comment: "",
 		},
 	})
 
@@ -59,8 +59,8 @@ export default function CheckoutPage() {
 
 			const url = await createOrder(data)
 			console.log(url)
-			toast.error('Заказ успешно оформлен! 📝 Переход на оплату... ', {
-				icon: '✅',
+			toast.error("Заказ успешно оформлен! 📝 Переход на оплату... ", {
+				icon: "✅",
 			})
 
 			if (url) {
@@ -69,8 +69,8 @@ export default function CheckoutPage() {
 		} catch (err) {
 			console.log(err)
 			setSubmitting(false)
-			toast.error('Не удалось создать заказ', {
-				icon: '❌',
+			toast.error("Не удалось создать заказ", {
+				icon: "❌",
 			})
 		}
 	}
@@ -78,14 +78,13 @@ export default function CheckoutPage() {
 	const onClickCountButton = (
 		id: number,
 		quantity: number,
-		type: 'plus' | 'minus'
+		type: "plus" | "minus"
 	) => {
-		const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1
+		const newQuantity = type === "plus" ? quantity + 1 : quantity - 1
 		updateItemQuantity(id, newQuantity)
 	}
 
 	return (
-		// <CheckoutLayout pageProps={pageProps}>
 		<Container className='mt-10'>
 			<Title
 				text='Оформление заказа'
@@ -105,11 +104,11 @@ export default function CheckoutPage() {
 							/>
 
 							<CheckoutPersonalForm
-								className={loading ? 'opacity-40 pointer-events-none' : ''}
+								className={loading ? "opacity-40 pointer-events-none" : ""}
 							/>
 
 							<CheckoutAddressForm
-								className={loading ? 'opacity-40 pointer-events-none' : ''}
+								className={loading ? "opacity-40 pointer-events-none" : ""}
 							/>
 						</div>
 
@@ -124,6 +123,5 @@ export default function CheckoutPage() {
 				</form>
 			</FormProvider>
 		</Container>
-		// </CheckoutLayout>
 	)
 }

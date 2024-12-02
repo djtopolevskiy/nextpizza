@@ -99,15 +99,14 @@ export async function createOrder(data: CheckoutFormValues) {
 			},
 		})
 
-		const paymentUrl = paymentData.confirmation.confirmation_url
-
-		await sendEmail(
+		// const paymentUrl = paymentData.confirmation.confirmation_url
+		const paymentUrl = await sendEmail(
 			data.email,
 			'Next Pizza / Оплатите заказ #' + order.id,
 			PayOrderTemplate({
 				orderId: order.id,
 				totalAmount: order.totalAmount,
-				paymentUrl,
+				paymentUrl: 'https://resend.com/docs/send-with-nextjs',
 			})
 		)
 

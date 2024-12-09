@@ -1,17 +1,18 @@
-"use client"
+'use client'
 
-import Image from "next/image"
-import React from "react"
+import Image from 'next/image'
+import React from 'react'
 
-import { cn } from "@/shared/lib/utils"
-import Link from "next/link"
-import { Button } from "../ui/button"
-import { CartButton } from "./cart-button"
-import { Container } from "./container"
-import { SearchInput } from "./search-input"
+import { cn } from '@/shared/lib/utils'
+import Link from 'next/link'
+import { Button } from '../ui/button'
+import { CartButton } from './cart-button'
+import { Container } from './container'
+import { SearchInput } from './search-input'
+import { useRouter, useSearchParams } from 'next/navigation'
 // import { AuthModal } from './modals/auth-modal';
 // import { ProfileButton } from './profile-button';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast'
 
 interface Props {
 	hasSearch?: boolean
@@ -25,34 +26,34 @@ export const Header: React.FC<Props> = ({
 	hasCart = true,
 }) => {
 	// const [openAuthModal, setOpenAuthModal] = React.useState(false)
-	// const searchParams = useSearchParams()
-	// const router = useRouter()
+	const searchParams = useSearchParams()
+	const router = useRouter()
 
-	// React.useEffect(() => {
-	// 	let toastMessage = ""
+	React.useEffect(() => {
+		let toastMessage = ''
 
-	// 	if (searchParams.has("verified")) {
-	// 		toastMessage = "Почта успешно подтверждена!"
-	// 	}
+		if (searchParams.has('verified')) {
+			toastMessage = 'Почта успешно подтверждена!'
+		}
 
-	// 	if (searchParams.has("paid")) {
-	// 		toastMessage = "Заказ успешно оплачен! Информация отправлена на почту."
-	// 	}
+		if (searchParams.has('paid')) {
+			toastMessage = 'Заказ успешно оплачен! Информация отправлена на почту.'
+		}
 
-	// 	if (toastMessage) {
-	// 		setTimeout(() => {
-	// 			router.replace("/")
-	// 			toast.success(toastMessage, {
-	// 				duration: 3000,
-	// 			})
-	// 		}, 1000)
-	// 	}
-	// }, [])
+		if (toastMessage) {
+			setTimeout(() => {
+				router.replace('/')
+				toast.success(toastMessage, {
+					duration: 3000,
+				})
+			}, 1000)
+		}
+	}, [])
 
 	// const onClickOpenAuthModal = () => setOpenAuthModal(true)
 
 	return (
-		<header className={cn("border-b border-gray-100", className)}>
+		<header className={cn('border-b border-gray-100', className)}>
 			<Container className='flex items-center justify-between py-8'>
 				<Link href='/'>
 					<div className='flex items-center gap-4'>

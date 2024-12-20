@@ -1,22 +1,22 @@
-'use server'
+"use server"
 
-import { PayOrderTemplate } from '@/shared/components'
-import { VerificationUserTemplate } from '@/shared/components/shared/email-temapltes/verification-user'
-import { CheckoutFormValues } from '@/shared/constants'
-import { sendEmail } from '@/shared/lib'
-import { getUserSession } from '@/shared/lib/get-user-session'
-import { OrderStatus, Prisma } from '@prisma/client'
-import { hashSync } from 'bcrypt'
-import { cookies } from 'next/headers'
-import { prisma } from './../../prisma/prisma-client'
+import { PayOrderTemplate } from "@/shared/components"
+import { VerificationUserTemplate } from "@/shared/components/shared/email-temapltes/verification-user"
+import { CheckoutFormValues } from "@/shared/constants"
+import { sendEmail } from "@/shared/lib"
+import { getUserSession } from "@/shared/lib/get-user-session"
+import { OrderStatus, Prisma } from "@prisma/client"
+import { hashSync } from "bcrypt"
+import { cookies } from "next/headers"
+import { prisma } from "./../../prisma/prisma-client"
 
 export async function createOrder(data: CheckoutFormValues) {
 	try {
 		const cookieStore = cookies()
-		const cartToken = cookieStore.get('cartToken')?.value
+		const cartToken = cookieStore.get("cartToken")?.value
 
 		if (!cartToken) {
-			throw new Error('Cart token not found')
+			throw new Error("Cart token not found")
 		}
 
 		/* Находим корзину по токену */
@@ -41,19 +41,19 @@ export async function createOrder(data: CheckoutFormValues) {
 
 		/* Если корзина не найдена возращаем ошибку */
 		if (!userCart) {
-			throw new Error('Cart not found')
+			throw new Error("Cart not found")
 		}
 
 		/* Если корзина пустая возращаем ошибку */
 		if (userCart?.totalAmount === 0) {
-			throw new Error('Cart is empty')
+			throw new Error("Cart is empty")
 		}
 
 		/* Создаем заказ */
 		const order = await prisma.order.create({
 			data: {
 				token: cartToken,
-				fullName: data.firstName + ' ' + data.lastName,
+				fullName: data.firstName + " " + data.lastName,
 				email: data.email,
 				phone: data.phone,
 				address: data.address,
@@ -100,11 +100,11 @@ export async function createOrder(data: CheckoutFormValues) {
 		// })
 
 		// const paymentUrl = paymentData.confirmation.confirmation_url
-		const paymentUrl = 'https://resend.com/emails'
+		const paymentUrl = "https://resend.com/emails"
 
 		await sendEmail(
 			data.email,
-			'Next Pizza / Оплатите заказ #' + order.id,
+			"Next Pizza / Оплатите заказ #" + order.id,
 			PayOrderTemplate({
 				orderId: order.id,
 				totalAmount: order.totalAmount,
@@ -114,7 +114,7 @@ export async function createOrder(data: CheckoutFormValues) {
 
 		return paymentUrl
 	} catch (err) {
-		console.log('[CreateOrder] Server error', err)
+		console.log("[CreateOrder] Server error", err)
 	}
 }
 
@@ -123,7 +123,7 @@ export async function updateUserInfo(body: Prisma.UserUpdateInput) {
 		const currentUser = await getUserSession()
 
 		if (!currentUser) {
-			throw new Error('Пользователь не найден')
+			throw new Error("Пользователь не найден")
 		}
 
 		const findUser = await prisma.user.findFirst({
@@ -145,7 +145,7 @@ export async function updateUserInfo(body: Prisma.UserUpdateInput) {
 			},
 		})
 	} catch (err) {
-		console.log('Error [UPDATE_USER]', err)
+		console.log("Error [UPDATE_USER]", err)
 		throw err
 	}
 }
@@ -157,13 +157,13 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 				email: body.email,
 			},
 		})
-
+		console.log(user)
 		if (user) {
 			if (!user.verified) {
-				throw new Error('Почта не подтверждена')
+				throw new Error("Почта не подтверждена")
 			}
 
-			throw new Error('Пользователь уже существует')
+			throw new Error("Пользователь уже существует")
 		}
 
 		const createdUser = await prisma.user.create({
@@ -185,13 +185,13 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 
 		await sendEmail(
 			createdUser.email,
-			'Next Pizza / 📝 Подтверждение регистрации',
+			"Next Pizza / 📝 Подтверждение регистрации",
 			VerificationUserTemplate({
 				code,
 			})
 		)
 	} catch (err) {
-		console.log('Error [CREATE_USER]', err)
+		console.log("Error [CREATE_USER]", err)
 		throw err
 	}
 }

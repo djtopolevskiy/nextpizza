@@ -1,17 +1,17 @@
-"use client"
+'use client'
 
-import Image from "next/image"
-import React from "react"
+import Image from 'next/image'
+import React from 'react'
 
-import { cn } from "@/shared/lib/utils"
-import Link from "next/link"
-import { useRouter, useSearchParams } from "next/navigation"
-import toast from "react-hot-toast"
-import { CartButton } from "./cart-button"
-import { Container } from "./container"
-import { AuthModal } from "./modals/auth-modal"
-import { ProfileButton } from "./profile-button"
-import { SearchInput } from "./search-input"
+import { cn } from '@/shared/lib/utils'
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
+import toast from 'react-hot-toast'
+import { CartButton } from './cart-button'
+import { Container } from './container'
+import { AuthModal } from './modals/auth-modal'
+import { ProfileButton } from './profile-button'
+import { SearchInput } from './search-input'
 
 interface Props {
 	hasSearch?: boolean
@@ -29,19 +29,19 @@ export const Header: React.FC<Props> = ({
 	const [openAuthModal, setOpenAuthModal] = React.useState(false)
 
 	React.useEffect(() => {
-		let toastMessage = ""
+		let toastMessage = ''
 
-		if (searchParams.has("verified")) {
-			toastMessage = "Почта успешно подтверждена!"
+		if (searchParams.has('verified')) {
+			toastMessage = 'Почта успешно подтверждена!'
 		}
 
-		if (searchParams.has("paid")) {
-			toastMessage = "Заказ успешно оплачен! Информация отправлена на почту."
+		if (searchParams.has('paid')) {
+			toastMessage = 'Заказ успешно оплачен! Информация отправлена на почту.'
 		}
 
 		if (toastMessage) {
 			setTimeout(() => {
-				router.replace("/")
+				router.replace('/')
 				toast.success(toastMessage, {
 					duration: 3000,
 				})
@@ -50,7 +50,7 @@ export const Header: React.FC<Props> = ({
 	}, [])
 
 	return (
-		<header className={cn("border-b border-gray-100", className)}>
+		<header className={cn('border-b border-gray-100', className)}>
 			<Container className='flex items-center justify-between py-8'>
 				<Link href='/'>
 					<div className='flex items-center gap-4'>
@@ -83,5 +83,5 @@ export const Header: React.FC<Props> = ({
 	)
 }
 function setOpenAuthModal(arg0: boolean) {
-	throw new Error("Function not implemented.")
+	throw new Error('Function not implemented.')
 }

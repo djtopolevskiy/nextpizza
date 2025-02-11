@@ -1,10 +1,10 @@
-import { Container } from "@/shared/components/shared/container"
-import { Filters } from "@/shared/components/shared/filters"
-import { ProductsGroupList } from "@/shared/components/shared/products-group-list"
-import { Title } from "@/shared/components/shared/title"
-import { TopBar } from "@/shared/components/shared/top-bar"
-import { GetSearchParams, findPizzas } from "@/shared/lib/find-pizzas"
-import { Suspense } from "react"
+import { Container } from '@/shared/components/shared/container'
+import { Filters } from '@/shared/components/shared/filters'
+import { ProductsGroupList } from '@/shared/components/shared/products-group-list'
+import { Title } from '@/shared/components/shared/title'
+import { TopBar } from '@/shared/components/shared/top-bar'
+import { GetSearchParams, findPizzas } from '@/shared/lib/find-pizzas'
+import { Suspense } from 'react'
 
 export default async function Home({
 	searchParams,
